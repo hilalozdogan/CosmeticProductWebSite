@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- METAS -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- TITLE -->
+    <title>Organik Kozmetik Ürün Mağazası</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <!-- LOAD MAIN CSS -->
+    <link href="~/css/bundle.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- WRAPPER START -->
+    <div id="wrapper">
+        <!-- HEADER START -->
+        <section id="header">
+            <!-- Fixed navbar -->
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+                            <img src="~/images/organik4.png" alt="Edura - Multipurpose Website Template">
+                        </a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            @if (User.Identity.IsAuthenticated)
+                   {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Hesap</a></li>
+                                <li><a href="/Account/Logout">Çıkış Yap</a></li>
+                            </ul>
+                        </li>
+                           }
+                          else
+                          {
+                        <li><a href="/Account/Login"><i class="fa fa-user-o"></i>Giriş Yap</a></li>
+                          }
+
+
+                            <li><a asp-controller="Cart" asp-action="Index"><i class="fa fa-shopping-cart fa-fw"></i>Sepetim(@await Component.InvokeAsync("CartSummary"))</a></li>
+
+                        </ul>
+
+                    </div><!--/.nav-collapse -->
+                </div>
+            </nav>
+        </section>
+        <!-- HEADER END -->
+        <!-- PAGE TITLE START -->
+        <section id="title" class="container-fluid wow fadeInDown">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h2>Organik Kozmetik Ürünler</h2>
+                    </div>
+                    <div class="col-xs-6 text-right breadcrumbs">
+                        <ul class="list-inline list-unstyled">
+                            <li><a asp-controller="Home" asp-action="Index"><b><big><big>Anasayfa</big></big></b></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PAGE TITLE END -->
+        <!-- CONTENT START -->               
+        @RenderBody()      
+        <!-- CONTENT END -->
+        <!-- FOOTER START -->
+        <section id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="~/images/organik4.png" alt="Edura - Multipurpose Website Template">
+                         <br>
+                        <h4><big>Organik Kozmetik Ürünler Mağazası</big></h4>
+                        <br>
+                        <ul class="list-unstyled list-inline social-icons">
+                            <li><a href="#" class="facebook"><i class="fa fa-facebook facebook"></i></a></li>
+                            <li><a href="#" class="twitter"><i class="fa fa-twitter twitter"></i></a></li>
+                            <li><a href="#" class="youtube"><i class="fa fa-youtube youtube"></i></a></li>
+              
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>İletişim</h3>
+                        <br>
+                        <p><i class="fa fa-map-pin fa-fw"></i>İzmir/Konak</p>
+                        <p><i class="fa fa-phone fa-fw"></i> +(505) 345 6879</p>
+                        <p><i class="fa fa-phone fa-fw"></i> +(232) 487 6875</p>
+                        <p><i class="fa fa-envelope fa-fw"></i>organik@gmail.com</p>
+                    </div>
+                 
+                </div>
+         
+            </div>
+        </section>
+        <!-- FOOTER END -->
+
+    </div>
+    <!-- WRAPPER END -->
+    <!-- back to top button -->
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+
+    <script src="~/js/bundle.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-81122143-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+   
+</body>
+</html>

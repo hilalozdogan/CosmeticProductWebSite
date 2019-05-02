@@ -1,0 +1,103 @@
+﻿@model ProductDetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<section id="content">
+
+    <!-- shop section start -->
+    <section id="shop" class="container">
+
+        <!-- row start -->
+        <div class="row">
+
+            <!-- sidebar start -->
+            <div id="sidebar" class="col-md-3">
+
+                <!-- search widget start -->
+                <div class="widget">
+                  
+                </div>
+                <!-- search widget end -->
+                <!-- categories widget start -->
+                @await Component.InvokeAsync("CategoryMenu")
+                <!-- categories widget end -->
+                <!-- featured products widget start -->
+                @await Component.InvokeAsync("FeaturedProducts")
+                <!-- featured products widget end -->
+
+            </div>
+            <!-- sidebar end -->
+            <!-- main column start -->
+            <div class="col-md-9">
+
+                <div class="row">
+
+
+                    <!-- product page top info start -->
+                    <div class="col-md-12 product">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="product-gallery" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+
+                                    @foreach (var img in Model.ProductImages)
+                                    {
+                                        <div class="item">
+                                            <img alt="" class="img-responsive" src="/images/products/@img.ImageName" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="padding15">
+                                    <h2 class="product-title"><b>@Model.Product.ProductName</b></h2>
+                                    
+                                    <p class="product-price"><b>@Model.Product.Price TL</b></p>
+                                </div>
+                                <p>@Model.Product.Description</p>
+
+                                <div class="padding15">
+
+                                    <form asp-action="AddToCart" asp-controller="Cart" method="post" class="form-inline">
+                                        
+                                        <input type="hidden" name="ProductId" value="@Model.Product.ProductId" />
+                                        <div class="form-group qty">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">Qty</span>
+                                                <input type="number" size="4" name="quantity" class="form-control" value="1" min="1" step="1">
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-cart-plus fa-fw"></i>Sepete Ekle</button>
+                                    </form>
+
+                                </div>
+
+                                <p>
+                                    <b>Kategori:</b>
+                                    @foreach (var item in Model.Categories)
+                                    {
+                                    <a href="#">@item.CategoryName</a>
+                                    }
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product page top info end -->
+                    <!-- product page middle info start -->
+                  
+                </div>
+                <!-- row end -->
+
+            </div>
+            <!-- main column end -->
+
+        </div>
+        <!-- row end -->
+
+    </section>
+    <!-- shop section end -->
+
+</section>
